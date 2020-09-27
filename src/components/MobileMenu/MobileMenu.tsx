@@ -1,7 +1,7 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 
-import { NavLink } from 'react-router-dom'
 
 interface MobileMenuProps {
   onDismiss: () => void
@@ -17,7 +17,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ onDismiss, visible }) => {
           <StyledLink exact activeClassName="active" to="/" onClick={onDismiss}>
             Home
           </StyledLink>
-          <StyledLink
+          {/* <StyledLink
             exact
             activeClassName="active"
             to="/farms"
@@ -32,7 +32,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ onDismiss, visible }) => {
             onClick={onDismiss}
           >
             Staking
-          </StyledLink>
+          </StyledLink> */}
         </StyledMobileMenu>
       </StyledMobileMenuWrapper>
     )
