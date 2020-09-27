@@ -1,12 +1,12 @@
-import Web3 from 'web3'
 import BigNumber from 'bignumber.js'
-import { Contracts } from './lib/contracts.js'
+import Web3 from 'web3'
 import { Account } from './lib/accounts.js'
+import { contractAddresses } from './lib/constants'
+import { Contracts } from './lib/contracts.js'
 import { EVM } from './lib/evm.js'
 
-import { contractAddresses } from './lib/constants'
 
-export class Sushi {
+export class Smol {
   constructor(provider, networkId, testing, options) {
     var realProvider
 
@@ -37,8 +37,7 @@ export class Sushi {
       this.web3.eth.defaultAccount = options.defaultAccount
     }
     this.contracts = new Contracts(realProvider, networkId, this.web3, options)
-    this.sushiAddress = contractAddresses.sushi[networkId]
-    this.masterChefAddress = contractAddresses.masterChef[networkId]
+    this.smolAddress = contractAddresses.smol[networkId]
     this.wethAddress = contractAddresses.weth[networkId]
   }
 

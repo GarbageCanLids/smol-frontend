@@ -1,35 +1,34 @@
-import { useCallback, useEffect, useState } from 'react'
-import { provider } from 'web3-core'
+// import BigNumber from 'bignumber.js'
+// import { useCallback, useEffect, useState } from 'react'
+// import { useWallet } from 'use-wallet'
+// import { provider } from 'web3-core'
+// import { getEarned } from '../smol/utils'
+// import useBlock from './useBlock'
+// import useSmol from './useSmol'
 
-import BigNumber from 'bignumber.js'
-import { useWallet } from 'use-wallet'
 
-import { getEarned, getMasterChefContract } from '../sushi/utils'
-import useSushi from './useSushi'
-import useBlock from './useBlock'
 
-const useEarnings = (pid: number) => {
-  const [balance, setBalance] = useState(new BigNumber(0))
-  const {
-    account,
-    ethereum,
-  }: { account: string; ethereum: provider } = useWallet()
-  const sushi = useSushi()
-  const masterChefContract = getMasterChefContract(sushi)
-  const block = useBlock()
+// const useEarnings = (pid: number) => {
+//   const [balance, setBalance] = useState(new BigNumber(0))
+//   const {
+//     account,
+//     ethereum,
+//   }: { account: string; ethereum: provider } = useWallet()
+//   const smol = useSmol()
+//   const block = useBlock()
 
-  const fetchBalance = useCallback(async () => {
-    const balance = await getEarned(masterChefContract, pid, account)
-    setBalance(new BigNumber(balance))
-  }, [account, masterChefContract, sushi])
+//   const fetchBalance = useCallback(async () => {
+//     const balance = await getEarned(masterChefContract, pid, account)
+//     setBalance(new BigNumber(balance))
+//   }, [account, smol])
 
-  useEffect(() => {
-    if (account && masterChefContract && sushi) {
-      fetchBalance()
-    }
-  }, [account, block, masterChefContract, setBalance, sushi])
+//   useEffect(() => {
+//     if (account && smol) {
+//       fetchBalance()
+//     }
+//   }, [account, block, setBalance, smol])
 
-  return balance
-}
+//   return balance
+// }
 
-export default useEarnings
+// export default useEarnings

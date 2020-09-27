@@ -1,28 +1,28 @@
-import { useCallback } from 'react'
+// import { useCallback } from 'react'
+// import { useWallet } from 'use-wallet'
+// import { getMasterChefContract, stake } from '../smol/utils'
+// import useSmol from './useSmol'
 
-import useSushi from './useSushi'
-import { useWallet } from 'use-wallet'
 
-import { stake, getMasterChefContract } from '../sushi/utils'
 
-const useStake = (pid: number) => {
-  const { account } = useWallet()
-  const sushi = useSushi()
+// const useStake = (pid: number) => {
+//   const { account } = useWallet()
+//   const smol = useSmol()
 
-  const handleStake = useCallback(
-    async (amount: string) => {
-      const txHash = await stake(
-        getMasterChefContract(sushi),
-        pid,
-        amount,
-        account,
-      )
-      console.log(txHash)
-    },
-    [account, pid, sushi],
-  )
+//   const handleStake = useCallback(
+//     async (amount: string) => {
+//       const txHash = await stake(
+//         getMasterChefContract(smol),
+//         pid,
+//         amount,
+//         account,
+//       )
+//       console.log(txHash)
+//     },
+//     [account, pid, smol],
+//   )
 
-  return { onStake: handleStake }
-}
+//   return { onStake: handleStake }
+// }
 
-export default useStake
+// export default useStake

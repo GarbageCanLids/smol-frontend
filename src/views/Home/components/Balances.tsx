@@ -6,15 +6,14 @@ import { useWallet } from 'use-wallet'
 import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
 import Label from '../../../components/Label'
+import SmolIcon from '../../../components/SmolIcon'
 import Spacer from '../../../components/Spacer'
 import Value from '../../../components/Value'
-import SushiIcon from '../../../components/SushiIcon'
 import useAllEarnings from '../../../hooks/useAllEarnings'
 import useAllStakedValue from '../../../hooks/useAllStakedValue'
 import useFarms from '../../../hooks/useFarms'
+import useSmol from '../../../hooks/useSmol'
 import useTokenBalance from '../../../hooks/useTokenBalance'
-import useSushi from '../../../hooks/useSushi'
-import { getSushiAddress, getSushiSupply } from '../../../sushi/utils'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 
 const PendingRewards: React.FC = () => {
@@ -71,19 +70,19 @@ const PendingRewards: React.FC = () => {
 
 const Balances: React.FC = () => {
   const [totalSupply, setTotalSupply] = useState<BigNumber>()
-  const sushi = useSushi()
-  const sushiBalance = useTokenBalance(getSushiAddress(sushi))
+  const smol = useSmol()
+  const smolBalance = useTokenBalance(getSmolAddress(smol))
   const { account, ethereum }: { account: any; ethereum: any } = useWallet()
 
   useEffect(() => {
     async function fetchTotalSupply() {
-      const supply = await getSushiSupply(sushi)
+      const supply = await getSmolSupply(smol)
       setTotalSupply(supply)
     }
-    if (sushi) {
+    if (smol) {
       fetchTotalSupply()
     }
-  }, [sushi, setTotalSupply])
+  }, [smol, setTotalSupply])
 
   return (
     <StyledWrapper>
@@ -91,12 +90,12 @@ const Balances: React.FC = () => {
         <CardContent>
           <StyledBalances>
             <StyledBalance>
-              <SushiIcon />
+              <SmolIcon />
               <Spacer />
               <div style={{ flex: 1 }}>
-                <Label text="Your SUSHI Balance" />
+                <Label text="Your SMOL Balance" />
                 <Value
-                  value={!!account ? getBalanceNumber(sushiBalance) : 'Locked'}
+                  value={!!account ? getBalanceNumber(smolBalance) : 'Locked'}
                 />
               </div>
             </StyledBalance>
@@ -105,7 +104,7 @@ const Balances: React.FC = () => {
         <Footnote>
           Pending harvest
           <FootnoteValue>
-            <PendingRewards /> SUSHI
+            <PendingRewards /> SMOL
           </FootnoteValue>
         </Footnote>
       </Card>
@@ -113,15 +112,11 @@ const Balances: React.FC = () => {
 
       <Card>
         <CardContent>
-          <Label text="Total SUSHI Supply" />
+          <Label text="Total SMOL Supply" />
           <Value
             value={totalSupply ? getBalanceNumber(totalSupply) : 'Locked'}
           />
         </CardContent>
-        <Footnote>
-          New rewards per block
-          <FootnoteValue>1,000 SUSHI</FootnoteValue>
-        </Footnote>
       </Card>
     </StyledWrapper>
   )

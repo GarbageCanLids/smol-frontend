@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useWallet } from 'use-wallet'
-import smol from '../../assets/img/smol.png'
 import Button from '../../components/Button'
 import Page from '../../components/Page'
 import PageHeader from '../../components/PageHeader'
 import WalletProviderModal from '../../components/WalletProviderModal'
 import useModal from '../../hooks/useModal'
-import useSushi from '../../hooks/useSushi'
+import useSmol from '../../hooks/useSmol'
 
 
 
@@ -22,14 +21,14 @@ const Farm: React.FC = () => {
     window.scrollTo(0, 0)
   }, [])
 
-  const sushi = useSushi()
+  const smol = useSmol()
   const { ethereum } = useWallet()
 
   // const lpContract = useMemo(() => {
   //   return getContract(ethereum as provider, lpTokenAddress)
   // }, [ethereum, lpTokenAddress])
 
-  // const { onRedeem } = useRedeem(getMasterChefContract(sushi))
+  // const { onRedeem } = useRedeem(getMasterChefContract(smol))
 
   // const lpTokenName = useMemo(() => {
   //   return lpToken.toUpperCase()

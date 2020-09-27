@@ -11,12 +11,10 @@ import Loader from '../../../components/Loader'
 import Spacer from '../../../components/Spacer'
 import { Farm } from '../../../contexts/Farms'
 import useAllStakedValue, {
-  StakedValue,
+  StakedValue
 } from '../../../hooks/useAllStakedValue'
 import useFarms from '../../../hooks/useFarms'
-import useSushi from '../../../hooks/useSushi'
-import { getEarned, getMasterChefContract } from '../../../sushi/utils'
-import { bnToDec } from '../../../utils'
+import useSmol from '../../../hooks/useSmol'
 
 interface FarmWithStakedValue extends Farm, StakedValue {
   apy: BigNumber
@@ -27,17 +25,17 @@ const FarmCards: React.FC = () => {
   const { account } = useWallet()
   const stakedValue = useAllStakedValue()
 
-  const sushiIndex = farms.findIndex(
-    ({ tokenSymbol }) => tokenSymbol === 'SUSHI',
+  const smolIndex = farms.findIndex(
+    ({ tokenSymbol }) => tokenSymbol === 'SMOL',
   )
 
-  const sushiPrice =
-    sushiIndex >= 0 && stakedValue[sushiIndex]
-      ? stakedValue[sushiIndex].tokenPriceInWeth
+  const smolPrice =
+  smolIndex >= 0 && stakedValue[smolIndex]
+      ? stakedValue[smolIndex].tokenPriceInWeth
       : new BigNumber(0)
 
   const BLOCKS_PER_YEAR = new BigNumber(2336000)
-  const SUSHI_PER_BLOCK = new BigNumber(1000)
+  const SMOL_PER_BLOCK = new BigNumber(1000)
 
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
@@ -45,8 +43,8 @@ const FarmCards: React.FC = () => {
         ...farm,
         ...stakedValue[i],
         apy: stakedValue[i]
-          ? sushiPrice
-              .times(SUSHI_PER_BLOCK)
+          ? smolPrice
+              .times(SMOL_PER_BLOCK)
               .times(BLOCKS_PER_YEAR)
               .times(stakedValue[i].poolWeight)
               .div(stakedValue[i].totalWethValue)
@@ -95,7 +93,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 
   const { account } = useWallet()
   const { lpTokenAddress } = farm
-  const sushi = useSushi()
+  const smol = useSmol()
 
   const renderer = (countdownProps: CountdownRenderProps) => {
     const { hours, minutes, seconds } = countdownProps
@@ -110,25 +108,13 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
   }
 
   useEffect(() => {
-    async function fetchEarned() {
-      if (sushi) return
-      const earned = await getEarned(
-        getMasterChefContract(sushi),
-        lpTokenAddress,
-        account,
-      )
-      setHarvestable(bnToDec(earned))
-    }
-    if (sushi && account) {
-      fetchEarned()
-    }
-  }, [sushi, lpTokenAddress, account, setHarvestable])
+  }, [smol, lpTokenAddress, account, setHarvestable])
 
   const poolActive = true // startTime * 1000 - Date.now() <= 0
 
   return (
     <StyledCardWrapper>
-      {farm.tokenSymbol === 'SUSHI' && <StyledCardAccent />}
+      {farm.tokenSymbol === 'SMOL' && <StyledCardAccent />}
       <Card>
         <CardContent>
           <StyledContent>

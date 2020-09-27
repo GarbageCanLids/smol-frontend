@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { useWallet } from 'use-wallet'
+import useSmol from '../../../hooks/useSmol'
 import useTokenBalance from '../../../hooks/useTokenBalance'
-import useSushi from '../../../hooks/useSushi'
-import { getSushiAddress } from '../../../sushi/utils'
+import { getSmolAddress } from '../../../smol/utils'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 import Button from '../../Button'
 import CardIcon from '../../CardIcon'
@@ -23,8 +23,8 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
     reset()
   }, [onDismiss, reset])
 
-  const sushi = useSushi()
-  const sushiBalance = useTokenBalance(getSushiAddress(sushi))
+  const smol = useSmol()
+  const smolBalance = useTokenBalance(getSmolAddress(smol))
 
   return (
     <Modal>
@@ -35,11 +35,11 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
         <div style={{ display: 'flex' }}>
           <StyledBalanceWrapper>
             <CardIcon>
-              <span>🍣</span>
+              <span>🐸</span>
             </CardIcon>
             <StyledBalance>
-              <Value value={getBalanceNumber(sushiBalance)} />
-              <Label text="SUSHI Balance" />
+              <Value value={getBalanceNumber(smolBalance)} />
+              <Label text="SMOL Balance" />
             </StyledBalance>
           </StyledBalanceWrapper>
         </div>
