@@ -70,9 +70,14 @@ export const getTotalLPWethValue = async (
     .balanceOf(lpContract.options.address)
     .call()
   const tokenDecimals = await tokenContract.methods.decimals().call()
+  const balance = 0 
+  // await lpContract.methods
+  //   .balanceOf(masterChefContract.options.address)
+  //   .call()
   // Convert that into the portion of total lpContract = p1
   const totalSupply = await lpContract.methods.totalSupply().call()
   // Get total weth value for the lpContract = w1
+
   const lpContractWeth = await wethContract.methods
     .balanceOf(lpContract.options.address)
     .call()

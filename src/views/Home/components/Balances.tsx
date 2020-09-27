@@ -14,8 +14,8 @@ import useAllStakedValue from '../../../hooks/useAllStakedValue'
 import useFarms from '../../../hooks/useFarms'
 import useSmol from '../../../hooks/useSmol'
 import useTokenBalance from '../../../hooks/useTokenBalance'
+import { getSmolAddress, getSmolSupply } from '../../../smol/utils'
 import { getBalanceNumber } from '../../../utils/formatBalance'
-
 const PendingRewards: React.FC = () => {
   const [start, setStart] = useState(0)
   const [end, setEnd] = useState(0)

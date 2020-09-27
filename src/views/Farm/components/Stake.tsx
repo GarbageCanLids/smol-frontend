@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Contract } from 'web3-eth-contract'
 import Button from '../../../components/Button'
@@ -11,15 +11,9 @@ import { AddIcon } from '../../../components/icons'
 import Label from '../../../components/Label'
 import Value from '../../../components/Value'
 import useAllowance from '../../../hooks/useAllowance'
-import useApprove from '../../../hooks/useApprove'
-import useModal from '../../../hooks/useModal'
-import useStake from '../../../hooks/useStake'
 import useStakedBalance from '../../../hooks/useStakedBalance'
 import useTokenBalance from '../../../hooks/useTokenBalance'
-import useUnstake from '../../../hooks/useUnstake'
 import { getBalanceNumber } from '../../../utils/formatBalance'
-import DepositModal from './DepositModal'
-import WithdrawModal from './WithdrawModal'
 
 interface StakeProps {
   lpContract: Contract
@@ -30,69 +24,71 @@ interface StakeProps {
 const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
 
-  const allowance = useAllowance(lpContract)
-  const { onApprove } = useApprove(lpContract)
+  const allowance = new BigNumber(0); useAllowance(lpContract)
+//  const { onApprove } = useApprove(lpContract)
 
   const tokenBalance = useTokenBalance(lpContract.options.address)
   const stakedBalance = useStakedBalance(pid)
 
-  const { onStake } = useStake(pid)
-  const { onUnstake } = useUnstake(pid)
+  //const { onStake } = useStake(pid)
+  //const { onUnstake } = useUnstake(pid)
 
-  const [onPresentDeposit] = useModal(
-    <DepositModal
-      max={tokenBalance}
-      onConfirm={onStake}
-      tokenName={tokenName}
-    />,
-  )
+  // const [onPresentDeposit] = useModal(
+  //   <DepositModal
+  //     max={tokenBalance}
+  //     onConfirm={onStake}
+  //     tokenName={tokenName}
+  //   />,
+  // )
 
-  const [onPresentWithdraw] = useModal(
-    <WithdrawModal
-      max={stakedBalance}
-      onConfirm={onUnstake}
-      tokenName={tokenName}
-    />,
-  )
+  // const [onPresentWithdraw] = useModal(
+  //   <WithdrawModal
+  //     max={stakedBalance}
+  //     onConfirm={onUnstake}
+  //     tokenName={tokenName}
+  //   />,
+  // )
 
-  const handleApprove = useCallback(async () => {
-    try {
-      setRequestedApproval(true)
-      const txHash = await onApprove()
-      // user rejected tx or didn't go thru
-      if (!txHash) {
-        setRequestedApproval(false)
-      }
-    } catch (e) {
-      console.log(e)
-    }
-  }, [onApprove, setRequestedApproval])
+  // const handleApprove = useCallback(async () => {
+  //   try {
+  //     setRequestedApproval(true)
+  //     //const txHash = await onApprove()
+  //     // user rejected tx or didn't go thru
+  //     if (!txHash) {
+  //       setRequestedApproval(false)
+  //     }
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }, [setRequestedApproval])
 
   return (
     <Card>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>👨🏻‍🍳</CardIcon>
-            <Value value={getBalanceNumber(stakedBalance)} />
+            <CardIcon>🐸</CardIcon>
+            <Value value={getBalanceNumber(allowance)} />
             <Label text={`${tokenName} Tokens Staked`} />
           </StyledCardHeader>
           <StyledCardActions>
             {!allowance.toNumber() ? (
               <Button
                 disabled={requestedApproval}
-                onClick={handleApprove}
-                text={`Approve ${tokenName}`}
+                //onClick={handleApprove}
+                //text={`Approve ${tokenName}`}
               />
             ) : (
               <>
                 <Button
                   disabled={stakedBalance.eq(new BigNumber(0))}
                   text="Unstake"
-                  onClick={onPresentWithdraw}
+                  //onClick={onPresentWithdraw}
                 />
                 <StyledActionSpacer />
-                <IconButton onClick={onPresentDeposit}>
+                <IconButton 
+                //onClick={onPresentDeposit}
+                >
                   <AddIcon />
                 </IconButton>
               </>

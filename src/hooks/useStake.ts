@@ -5,7 +5,7 @@
 
 
 
-// const useStake = (pid: number) => {
+ const useStake = (pid: number) => {
 //   const { account } = useWallet()
 //   const smol = useSmol()
 
@@ -23,6 +23,6 @@
 //   )
 
 //   return { onStake: handleStake }
-// }
+ }
 
-// export default useStake
+ export default useStake

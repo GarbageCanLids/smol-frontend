@@ -7,7 +7,7 @@
 
 
 
-// const useStakedBalance = (pid: number) => {
+ const useStakedBalance = (pid: number) => {
 //   const [balance, setBalance] = useState(new BigNumber(0))
 //   const { account }: { account: string } = useWallet()
 //   const smol = useSmol()
@@ -26,6 +26,5 @@
 //   }, [account, pid, setBalance, block, smol])
 
 //   return balance
-// }
-
-// export default useStakedBalance
+ }
+ export default useStakedBalance

@@ -5,7 +5,7 @@
 
 
 
-// const useUnstake = (pid: number) => {
+ const useUnstake = (pid: number) => {
 //   const { account } = useWallet()
 //   const smol = useSmol()
 //   const masterChefContract = getMasterChefContract(smol)
@@ -19,6 +19,6 @@
 //   )
 
 //   return { onUnstake: handleUnstake }
-// }
+ }
 
-// export default useUnstake
+ export default useUnstake

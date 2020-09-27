@@ -41,7 +41,6 @@ const useAllStakedValue = () => {
           tokenContract: Contract
         }) =>
           getTotalLPWethValue(
-            masterChefContract,
             wethContact,
             lpContract,
             tokenContract,
@@ -51,13 +50,13 @@ const useAllStakedValue = () => {
     )
 
     setBalance(balances)
-  }, [account, masterChefContract, smol])
+  }, [account, smol])
 
   useEffect(() => {
-    if (account && masterChefContract && smol) {
+    if (account && smol) {
       fetchAllStakedValue()
     }
-  }, [account, block, masterChefContract, setBalance, smol])
+  }, [account, block, setBalance, smol])
 
   return balances
 }

@@ -8,7 +8,7 @@
 
 
 
-// const useEarnings = (pid: number) => {
+ const useEarnings = (pid: number) => {
 //   const [balance, setBalance] = useState(new BigNumber(0))
 //   const {
 //     account,
@@ -29,6 +29,6 @@
 //   }, [account, block, setBalance, smol])
 
 //   return balance
-// }
+ }
 
-// export default useEarnings
+export default useEarnings

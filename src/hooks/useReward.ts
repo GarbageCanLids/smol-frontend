@@ -5,7 +5,7 @@
 
 
 
-// const useReward = (pid: number) => {
+ const useReward = (pid: number) => {
 //   const { account } = useWallet()
 //   const smol = useSmol()
 //   const masterChefContract = getMasterChefContract(smol)
@@ -17,6 +17,6 @@
 //   }, [account, pid, smol])
 
 //   return { onReward: handleReward }
-// }
+ }
 
-// export default useReward
+ export default useReward

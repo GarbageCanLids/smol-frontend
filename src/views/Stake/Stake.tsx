@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useWallet } from 'use-wallet'
+import smol from '../../assets/img/smol.png'
 import Button from '../../components/Button'
 import Page from '../../components/Page'
 import PageHeader from '../../components/PageHeader'
 import WalletProviderModal from '../../components/WalletProviderModal'
 import useModal from '../../hooks/useModal'
-import useSmol from '../../hooks/useSmol'
-
-
-
-
 
 
 const Farm: React.FC = () => {
@@ -21,7 +17,7 @@ const Farm: React.FC = () => {
     window.scrollTo(0, 0)
   }, [])
 
-  const smol = useSmol()
+  //const smol = useSmol()
   const { ethereum } = useWallet()
 
   // const lpContract = useMemo(() => {
