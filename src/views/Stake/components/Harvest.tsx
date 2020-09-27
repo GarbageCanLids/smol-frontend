@@ -1,3 +1,4 @@
+import BigNumber from 'bignumber.js'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Button from '../../../components/Button'
@@ -7,7 +8,6 @@ import CardIcon from '../../../components/CardIcon'
 import Label from '../../../components/Label'
 import Value from '../../../components/Value'
 import useEarnings from '../../../hooks/useEarnings'
-import useReward from '../../../hooks/useReward'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 
 interface HarvestProps {
@@ -15,9 +15,9 @@ interface HarvestProps {
 }
 
 const Harvest: React.FC<HarvestProps> = ({ pid }) => {
-  const earnings = useEarnings(pid)
+  const earnings = new BigNumber(0); useEarnings(pid)
   const [pendingTx, setPendingTx] = useState(false)
-  const { onReward } = useReward(pid)
+  //const { onReward } = useReward(pid)
 
   return (
     <Card>
@@ -34,7 +34,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
               text={pendingTx ? 'Collecting SMOL' : 'Harvest'}
               onClick={async () => {
                 setPendingTx(true)
-                await onReward()
+                // await onReward()
                 setPendingTx(false)
               }}
             />

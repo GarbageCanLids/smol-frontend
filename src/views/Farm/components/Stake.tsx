@@ -11,7 +11,6 @@ import { AddIcon } from '../../../components/icons'
 import Label from '../../../components/Label'
 import Value from '../../../components/Value'
 import useAllowance from '../../../hooks/useAllowance'
-import useStakedBalance from '../../../hooks/useStakedBalance'
 import useTokenBalance from '../../../hooks/useTokenBalance'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 
@@ -28,7 +27,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
 //  const { onApprove } = useApprove(lpContract)
 
   const tokenBalance = useTokenBalance(lpContract.options.address)
-  const stakedBalance = useStakedBalance(pid)
+  const stakedBalance = new BigNumber(0); //useStakedBalance(pid)
 
   //const { onStake } = useStake(pid)
   //const { onUnstake } = useUnstake(pid)

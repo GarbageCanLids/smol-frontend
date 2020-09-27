@@ -10,9 +10,6 @@ import IconButton from '../../../components/IconButton'
 import { AddIcon } from '../../../components/icons'
 import Label from '../../../components/Label'
 import Value from '../../../components/Value'
-import useAllowance from '../../../hooks/useAllowance'
-import useApprove from '../../../hooks/useApprove'
-import useStakedBalance from '../../../hooks/useStakedBalance'
 import useTokenBalance from '../../../hooks/useTokenBalance'
 
 interface StakeProps {
@@ -24,11 +21,11 @@ interface StakeProps {
 const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
 
-  const allowance = useAllowance(lpContract)
-  const { onApprove } = useApprove(lpContract)
+  const allowance = new BigNumber(0); //useAllowance(lpContract)
+  //const { onApprove } = useApprove(lpContract)
 
   const tokenBalance = useTokenBalance(lpContract.options.address)
-  const stakedBalance = useStakedBalance(pid)
+  const stakedBalance = new BigNumber(0);// useStakedBalance(pid)
 
   // const { onStake } = useStake(pid)
   // const { onUnstake } = useUnstake(pid)
@@ -52,15 +49,15 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
   const handleApprove = useCallback(async () => {
     try {
       setRequestedApproval(true)
-      const txHash = await onApprove()
+      //const txHash = await onApprove()
       // user rejected tx or didn't go thru
-      if (!txHash) {
-        setRequestedApproval(false)
-      }
+      // if (!txHash) {
+      //   setRequestedApproval(false)
+      // }
     } catch (e) {
       console.log(e)
     }
-  }, [onApprove, setRequestedApproval])
+  }, [setRequestedApproval])
 
   return (
     <Card>
