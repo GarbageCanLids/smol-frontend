@@ -12,6 +12,7 @@ import TransactionProvider from './contexts/Transactions'
 import useModal from './hooks/useModal'
 import theme from './theme'
 import Home from './views/Home'
+import Landing from "./views/Landing/Landing";
 //import Stake from './views/Stake'
 
 const App: React.FC = () => {
@@ -33,6 +34,9 @@ const App: React.FC = () => {
         <Switch>
           <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/landing" exact>
+            <Landing />
           </Route>
           {/* <Route path="/farms">
             <Farms />

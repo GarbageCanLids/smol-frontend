@@ -34,6 +34,9 @@ const Button: React.FC<ButtonProps> = ({
     case 'default':
     default:
       buttonColor = color.primary.main
+      break
+    case 'tertiary':
+      buttonColor = color.red[100]
   }
 
   let boxShadow: string
