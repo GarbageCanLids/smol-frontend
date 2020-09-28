@@ -1,9 +1,10 @@
 import BigNumber from 'bignumber.js'
-import Web3 from 'web3'
 import { Account } from './lib/accounts.js'
 import { contractAddresses } from './lib/constants'
 import { Contracts } from './lib/contracts.js'
 import { EVM } from './lib/evm.js'
+
+const Web3 = require("web3");
 
 
 export class Smol {
