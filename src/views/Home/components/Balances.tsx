@@ -101,12 +101,12 @@ const Balances: React.FC = () => {
             </StyledBalance>
           </StyledBalances>
         </CardContent>
-        <Footnote>
+        {/* <Footnote>
           Pending harvest
           <FootnoteValue>
             <PendingRewards /> SMOL
           </FootnoteValue>
-        </Footnote>
+        </Footnote> */}
       </Card>
       <Spacer />
 
