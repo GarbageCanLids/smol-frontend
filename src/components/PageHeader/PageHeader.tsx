@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import Container from '../Container'
+
+
+
 
 interface PageHeaderProps {
   icon: React.ReactNode
@@ -36,7 +38,7 @@ const StyledIcon = styled.div`
   height: 120px;
   line-height: 120px;
   text-align: center;
-  width: 120px;
+  width: 350px;
 `
 
 const StyledTitle = styled.h1`
