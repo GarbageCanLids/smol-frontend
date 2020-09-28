@@ -15,7 +15,7 @@ const Nav: React.FC = () => {
         Staking
       </StyledLink> */}
       <StyledAbsoluteLink
-        href="https://medium.com/sushiswap/the-sushiswap-project-c4049ea9941e" //TODO
+        href="/about" //TODO
         target="_blank"
       >
         About
