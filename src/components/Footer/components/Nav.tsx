@@ -12,7 +12,7 @@ const Nav: React.FC = () => {
       </StyledLink>
       <StyledLink
         target="_blank"
-        href="https://app.uniswap.org/#/swap?inputCurrency=0x2216e873ea4282ebef7a02ac5aea220be6391a7c&outputCurrency=ETH"
+        href="https://app.uniswap.org/#/swap?inuptCurrency=ETH&outputCurrency=0x2216e873ea4282ebef7a02ac5aea220be6391a7c&exactField=output&exactAmount=100"
       >
         uniswap smol-eth
       </StyledLink>
