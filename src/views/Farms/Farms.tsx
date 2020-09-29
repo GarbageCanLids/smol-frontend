@@ -27,7 +27,7 @@ const Farms: React.FC = () => {
             <Route exact path={path}>
               <PageHeader
                 icon={<img src={smol} height="120" />}
-                subtitle="Earn SMOL tokens by staking Uniswap V2 LP Tokens."
+                subtitle="smol ting tokens are earned by doing smol tings"
                 title="Select Your Favorite Dishes"
               />
               <FarmCards />
