@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import smol from '../../assets/img/smol.png'
+import smol from '../../assets/img/smol.svg'
 import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Page from '../../components/Page'
@@ -13,8 +13,8 @@ const Home: React.FC = () => {
     <Page>
       <PageHeader
         icon={<img src={smol} height={120} />}
-        title="big tings. smol pkg"
-        subtitle="- smol ting 2020 "
+        title="big tings, smol pkgs"
+        subtitle="collect them all"
       />
 
       <Container>
@@ -22,7 +22,7 @@ const Home: React.FC = () => {
       </Container>
       <Spacer size="lg" />
       <StyledInfo>
-        🏆<b>Pro Tip</b>: smol is the future of finance
+       🛸 <b>Tip</b>: smol tings are super rewarding 🛸
       </StyledInfo>
       <Spacer size="lg" />
       <div

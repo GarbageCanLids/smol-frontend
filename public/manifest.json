@@ -1,6 +1,6 @@
 {
   "short_name": "smolfinance",
-  "name": "big tings. smol pkg",
+  "name": "big tings, smol pkgs",
   "icons": [
     {
       "src": "favicon.png",
@@ -12,4 +12,5 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
+  "background)image: "bg.jpg"
 }
